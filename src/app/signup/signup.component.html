@@ -1,0 +1,275 @@
+<div class="continer-fluid">
+  <h1 class="fw-bold m-0 text-center">Sign Up Here</h1>
+  <p class="mb-3 text-center">Sign In to your Account</p>
+
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <div class="login-form">
+        <form [formGroup]="firstFormGroup" (ngSubmit)="onFirstSubmit()">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              formControlName="fname"
+              placeholder="First name"
+              required
+              #firstname
+            />
+            <mat-error *ngIf="firstFormSubmitted && first.fname.errors">
+              <ng-container *ngIf="first.fname.errors.required">
+                First Name required
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              formControlName="lname"
+              placeholder="Last name"
+              required
+            />
+            <mat-error *ngIf="firstFormSubmitted && first.lname.errors">
+              <ng-container *ngIf="first.lname.errors.required">
+                Last Name required
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder="Email"
+              required
+            />
+            <mat-error *ngIf="firstFormSubmitted && first.email.errors">
+              <ng-container *ngIf="first.email.errors.required">
+                Email required
+              </ng-container>
+
+              <ng-container *ngIf="first.email.errors.email">
+                Email must be a valid email address
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input
+              type="tel"
+              matInput
+              formControlName="phone"
+              placeholder="Phone"
+              required
+            />
+            <mat-error *ngIf="firstFormSubmitted && first.phone.errors">
+              <ng-container *ngIf="first.phone.errors.required">
+                Phone no is required
+              </ng-container>
+
+              <ng-container
+                *ngIf="
+                  first.phone.errors.minlength || first.phone.errors.maxlength
+                "
+              >
+                phone no must be at 10 numbers
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              matInput
+              formControlName="password"
+              placeholder="Password"
+              required
+            />
+
+            <mat-error *ngIf="firstFormSubmitted && first.password.errors">
+              <ng-container *ngIf="first.password.errors.required">
+                Password required
+              </ng-container>
+
+              <ng-container *ngIf="first.password.errors.minlength">
+                Password must be at least 4 characterss
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              type="password"
+              matInput
+              formControlName="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+
+            <mat-error
+              *ngIf="firstFormSubmitted && first.confirmPassword.errors"
+            >
+              <ng-container *ngIf="first.confirmPassword.errors.required">
+                Confirm password required
+              </ng-container>
+
+              <ng-container *ngIf="first.confirmPassword.errors.mustMatch">
+                Password and confirm not match
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button
+              mat-button
+              matStepperNext
+              mat-raised-button
+              color="primary"
+              class="w-100"
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <div class="login-form">
+        <form [formGroup]="secondFormGroup" (ngSubmit)="onSecondSubmit()">
+          <ng-template matStepLabel>Fill out your address</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>State Name</mat-label>
+            <input
+              matInput
+              formControlName="state"
+              placeholder="State"
+              #state
+              required
+            />
+            <mat-error *ngIf="secondFormSubmitted && second.state.errors">
+              <ng-container *ngIf="second.state.errors.required">
+                State Name required
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>City Name</mat-label>
+            <input
+              matInput
+              formControlName="city"
+              placeholder="City"
+              required
+            />
+            <mat-error *ngIf="secondFormSubmitted && second.city.errors">
+              <ng-container *ngIf="second.city.errors.required">
+                City Name required
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Zip Code</mat-label>
+            <input
+              matInput
+              formControlName="zip"
+              placeholder="Zip Code"
+              required
+            />
+            <mat-error *ngIf="secondFormSubmitted && second.zip.errors">
+              <ng-container *ngIf="second.zip.errors.required">
+                Zip code required
+              </ng-container>
+              <ng-container
+                *ngIf="
+                  second.zip.errors.minlength || second.zip.errors.maxlength
+                "
+              >
+                Zip code must be 6
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+          <div class="row">
+            <div class="col-6">
+              <button
+                mat-button
+                matStepperPrevious
+                mat-raised-button
+                color="warn"
+                class="w-100"
+              >
+                Back
+              </button>
+            </div>
+            <div class="col-6">
+              <button
+                mat-button
+                matStepperNext
+                mat-raised-button
+                color="primary"
+                class="w-100"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="login-form">
+        <h1>You are now done.</h1>
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <button
+              mat-button
+              matStepperPrevious
+              mat-raised-button
+              color="warn"
+              class="w-100"
+            >
+              Back
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <button
+              mat-button
+              (click)="stepper.reset()"
+              mat-raised-button
+              color="warn"
+              class="w-100"
+            >
+              Reset
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <button
+              mat-button
+              (click)="submitData()"
+              mat-raised-button
+              color="primary"
+              class="w-100"
+            >
+              Submit
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <button
+              mat-button
+              routerLink="/login"
+              mat-raised-button
+              color="warn"
+              class="w-100"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
+<div class="overlay" *ngIf="showLoader">
+  <mat-spinner color="warn"></mat-spinner>
+</div>

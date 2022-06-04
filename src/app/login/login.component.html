@@ -1,0 +1,73 @@
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <div class="col-5 login-left">
+      <div class="login-left-content">
+        <h1>Multi Step Login</h1>
+        <p>
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout.
+        </p>
+        <img src="../../assets/images/loginimage.png" alt="login" />
+      </div>
+    </div>
+    <div class="col-7 text-center mt-5">
+      <div class="login-form">
+        <h1 class="fw-bold m-0">Welcome Back</h1>
+        <p class="mb-3">Sign In to your Account</p>
+
+        <form [formGroup]="loginFormGroup" (ngSubmit)="onLogin()">
+          <mat-form-field appearance="outline">
+            <mat-label>Email/Phone no</mat-label>
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+              required
+              #email
+            />
+            <mat-error *ngIf="loginFormSubmitted && login.email.errors">
+              <ng-container *ngIf="login.email.errors.required">
+                Email required
+              </ng-container>
+
+              <ng-container *ngIf="login.email.errors.email">
+                Email must be a valid email address
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              matInput
+              formControlName="password"
+              placeholder="Password"
+              required
+            />
+            <mat-error *ngIf="loginFormSubmitted && login.password.errors">
+              <ng-container *ngIf="login.password.errors.required">
+                Password required
+              </ng-container>
+
+              <ng-container *ngIf="login.password.errors.minlength">
+                Password must be at least 4 characterss
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+
+          <button type="submit" mat-raised-button color="primary" class="w-100 p-2">
+            Log In
+          </button>
+          <p class="text-start pt-3">
+            Don't have account? <a routerLink="/signup">Signup</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="overlay" *ngIf="showLoader">
+  <mat-spinner color="warn"></mat-spinner>
+</div>

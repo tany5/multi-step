@@ -1,0 +1,41 @@
+h1,
+p {
+  line-height: 1.2;
+}
+.mat-form-field {
+  width: 100%;
+}
+.login-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #17aef1 0, #17aef1 15%, #1771f1);
+  .login-left-content {
+    width: 80%;
+    text-align: center;
+    h1,
+    p {
+      color: #fff;
+    }
+  }
+}
+
+.login-form {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.overlay{
+  background: rgba($color: #000000, $alpha: 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

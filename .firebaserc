@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "multi-step-81828": {
+      "hosting": {
+        "multi-step": [
+          "multi-step-81828"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "multi-step-new"
+  }
+}

@@ -1,0 +1,27 @@
+<div
+  class="container-fluid d-flex justify-content-center p-5"
+  *ngIf="showUser"
+>
+  <div class="card" style="width: 18rem">
+    <div class="card-header">
+      <h1 class="text-capitalize">{{ user.fname + " " + user.lname }}</h1>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Email: {{ user.email }}</li>
+      <li class="list-group-item">Phone: {{ user.phone }}</li>
+      <li class="list-group-item">State: {{ user.state }}</li>
+      <li class="list-group-item">State: {{ user.state }}</li>
+      <li class="list-group-item">City: {{ user.city }}</li>
+      <li class="list-group-item">Zip: {{ user.zip }}</li>
+      <li class="list-group-item"> <button mat-raised-button color="warn" (click)="logOut()">Logout</button> </li>
+    </ul>
+  </div>
+</div>
+<div
+  class="container-fluid h-100 d-flex justify-content-center align-items-center"
+  *ngIf="!showUser"
+>
+  <mat-spinner color="warn"></mat-spinner>
+</div>
+
+
